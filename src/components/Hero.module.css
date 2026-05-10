@@ -1,0 +1,140 @@
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px 0 90px; overflow: hidden;
+}
+
+/* Full-bleed background image */
+.bannerWrap { position: absolute; inset: 0; z-index: 0; }
+.bannerImg {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 38%;
+  filter: brightness(.45) saturate(.9);
+}
+
+/* Gradient overlay — matches accent colour */
+.overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg,
+    hsla(var(--h),60%,8%,.82) 0%,
+    hsla(var(--h),70%,20%,.52) 55%,
+    hsla(calc(var(--h)+20),70%,30%,.22) 100%);
+  transition: background 0.5s;
+}
+
+/* Floating orbs behind content */
+.hero::after {
+  content: '';
+  position: absolute; width: 480px; height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, hsla(var(--h),80%,55%,0.22) 0%, transparent 70%);
+  top: 15%; right: 5%; z-index: 1; pointer-events: none;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+@keyframes orbFloat {
+  0%,100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-24px) scale(1.04); }
+}
+
+.content { position: relative; z-index: 2; max-width: 760px; }
+
+/* Badge */
+.badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 16px rgba(0,0,0,0.1);
+  color: rgba(255,255,255,.88);
+  padding: .42rem 1.1rem; border-radius: 50px;
+  font-size: .79rem; font-weight: 600; letter-spacing: .3px;
+  margin-bottom: 1.5rem;
+}
+.pulse {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent-lite); flex-shrink: 0;
+  animation: pulseRing 2s ease-out infinite;
+}
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0 var(--accent-glow); }
+  70%  { box-shadow: 0 0 0 9px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* Headline */
+.title {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 800; line-height: 1.08;
+  color: #fff; margin-bottom: 1.1rem;
+  text-shadow: 0 2px 32px rgba(0,0,0,0.3);
+  letter-spacing: -0.5px;
+}
+.em {
+  background: linear-gradient(135deg, var(--accent-lite), #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tagline */
+.tagline {
+  font-size: 1.08rem; color: rgba(255,255,255,.78);
+  line-height: 1.78; margin-bottom: 1.5rem; max-width: 580px;
+}
+
+/* Landmark pills */
+.landmarks { display: flex; flex-wrap: wrap; gap: .65rem; margin-bottom: 2.2rem; }
+.landmark {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: rgba(255,255,255,.10);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+  padding: .42rem 1rem; border-radius: 50px;
+  font-size: .84rem; font-weight: 700;
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.landmark:hover {
+  background: rgba(255,255,255,.18);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,.2);
+}
+.lIcon { font-size: 1rem; }
+
+/* CTAs */
+.actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+/* Stats bar — liquid glass panel */
+.stats {
+  display: flex; flex-wrap: wrap;
+  background: rgba(255,255,255,.10);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15),
+              inset 0 1px 0 rgba(255,255,255,.25),
+              inset 0 -1px 0 rgba(0,0,0,.05);
+  border-radius: 20px; overflow: hidden;
+}
+.stat {
+  flex: 1 1 80px;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 1.1rem 1.4rem;
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+.stat:last-child { border-right: none; }
+.statNum {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem; font-weight: 700; line-height: 1;
+  background: linear-gradient(135deg, var(--accent-lite), #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.statLbl { font-size: .72rem; color: rgba(255,255,255,.62); font-weight: 500; margin-top: 4px; text-align: center; }
+
+@media (max-width: 600px) {
+  .hero { padding: 98px 0 60px; }
+  .hero::after { display: none; }
+  .title { font-size: 2.2rem; }
+  .stat { padding: .88rem .9rem; }
+  .statNum { font-size: 1.28rem; }
+}

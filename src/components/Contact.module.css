@@ -1,0 +1,90 @@
+.section { padding: 90px 0; }
+.header { max-width: 620px; margin-bottom: 3.5rem; }
+.grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 3rem; align-items: start; }
+
+/* Contact info items */
+.cItem {
+  display: flex; gap: .9rem; align-items: flex-start;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.3);
+  padding: 1rem 1.2rem; border-radius: 14px; margin-bottom: .85rem;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+  position: relative; overflow: hidden;
+}
+.cItem::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+  pointer-events: none;
+}
+.cItem:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--glass-hover); }
+.cIcon { font-size: 1.4rem; flex-shrink: 0; }
+.cLabel { font-size: .7rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+.cVal { font-size: .9rem; color: var(--text2); font-weight: 500; margin-top: 2px; }
+.cLink { font-size: .9rem; color: var(--accent); font-weight: 600; text-decoration: none; margin-top: 2px; display: block; }
+.cLink:hover { text-decoration: underline; }
+
+.mapWrap { border-radius: 16px; overflow: hidden; border: 1px solid var(--glass-border); margin-top: .5rem; box-shadow: var(--glass-shadow); }
+.mapWrap iframe { width: 100%; height: 195px; border: none; display: block; }
+
+/* Enquiry form card */
+.formCard {
+  background: var(--glass-bg2);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px; padding: 2rem;
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.4);
+  position: relative; overflow: hidden;
+}
+.formCard::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent);
+  pointer-events: none;
+}
+.formTitle { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); margin-bottom: 1.4rem; font-weight: 700; }
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+.field { display: flex; flex-direction: column; gap: .32rem; margin-bottom: .9rem; }
+.field label { font-size: .78rem; font-weight: 700; color: var(--text2); }
+
+.field input, .field select, .field textarea {
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255,255,255,0.55);
+  border-radius: 12px; padding: .68rem 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .88rem; color: var(--text);
+  outline: none; transition: border-color .2s, box-shadow .2s, background .2s;
+  resize: vertical;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.04), 0 1px 0 rgba(255,255,255,0.6);
+}
+[data-theme="dark"] .field input,
+[data-theme="dark"] .field select,
+[data-theme="dark"] .field textarea {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.14);
+  color: var(--text);
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--muted); }
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.65);
+  box-shadow: 0 0 0 3px var(--accent-subtle), inset 0 1px 2px rgba(0,0,0,0.04);
+}
+[data-theme="dark"] .field input:focus,
+[data-theme="dark"] .field select:focus,
+[data-theme="dark"] .field textarea:focus {
+  background: rgba(255,255,255,0.12);
+}
+
+.success {
+  background: var(--accent-subtle);
+  border: 1.5px solid var(--accent);
+  border-radius: 16px; padding: 2.5rem; text-align: center;
+  font-size: 1.05rem; font-weight: 600; color: var(--accent);
+}
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .row { grid-template-columns: 1fr; } .formCard { padding: 1.4rem; } }

@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ═══════════════════════════════════════════════
+   APPLE GLASS — DESIGN TOKENS
+═══════════════════════════════════════════════ */
+
+/* Hue palettes (same as before, drives accent colour) */
+:root                      { --h: 199; --s: 89%; --l: 48%; }
+[data-color="violet"]      { --h: 262; --s: 83%; --l: 52%; }
+[data-color="rose"]        { --h: 340; --s: 82%; --l: 52%; }
+[data-color="amber"]       { --h: 38;  --s: 92%; --l: 48%; }
+[data-color="emerald"]     { --h: 158; --s: 72%; --l: 40%; }
+[data-color="indigo"]      { --h: 234; --s: 89%; --l: 55%; }
+
+/* Accent tokens */
+:root {
+  --accent:       hsl(var(--h), var(--s), var(--l));
+  --accent2:      hsl(var(--h), var(--s), calc(var(--l) - 10%));
+  --accent3:      hsl(var(--h), var(--s), calc(var(--l) - 20%));
+  --accent-lite:  hsl(var(--h), var(--s), calc(var(--l) + 22%));
+  --accent-glow:  hsla(var(--h), var(--s), var(--l), 0.28);
+  --accent-subtle:hsla(var(--h), var(--s), var(--l), 0.12);
+  --cyan:         hsl(calc(var(--h) + 14), var(--s), calc(var(--l) + 6%));
+}
+
+/* ── LIGHT GLASS ── */
+:root {
+  /* Backgrounds — soft gradient mesh */
+  --bg-mesh: radial-gradient(ellipse 80% 60% at 20% 10%,
+               hsla(var(--h),80%,88%,0.55) 0%, transparent 60%),
+             radial-gradient(ellipse 60% 50% at 80% 80%,
+               hsla(calc(var(--h)+40),70%,85%,0.45) 0%, transparent 60%),
+             radial-gradient(ellipse 50% 40% at 50% 50%,
+               hsla(calc(var(--h)-20),60%,96%,0.8) 0%, transparent 70%),
+             hsl(var(--h), 45%, 97%);
+  --bg:          hsl(var(--h), 35%, 97%);
+  --bg2:         hsla(var(--h), 40%, 95%, 0.7);
+  --bg3:         hsla(var(--h), 45%, 91%, 0.8);
+
+  /* Glass surface tokens */
+  --glass-bg:    rgba(255,255,255,0.55);
+  --glass-bg2:   rgba(255,255,255,0.72);
+  --glass-border:rgba(255,255,255,0.75);
+  --glass-border2:rgba(255,255,255,0.45);
+  --glass-shadow:0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+  --glass-hover: 0 16px 48px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06);
+  --glass-blur:  saturate(180%) blur(20px);
+  --glass-tint:  hsla(var(--h), 70%, 65%, 0.08);
+
+  /* Text */
+  --text:   hsl(var(--h), 30%, 12%);
+  --text2:  hsl(var(--h), 25%, 28%);
+  --muted:  hsl(var(--h), 20%, 50%);
+  --subtle: hsl(var(--h), 20%, 68%);
+
+  /* Nav */
+  --nav-bg: rgba(255,255,255,0.6);
+  --nav-blur: saturate(200%) blur(24px);
+
+  /* Section dark bg (Why Us) */
+  --why-bg: linear-gradient(135deg,
+    hsl(var(--h),50%,10%) 0%,
+    hsl(var(--h),55%,14%) 55%,
+    hsl(calc(var(--h)+20),50%,16%) 100%);
+
+  /* Kept for compat */
+  --surface:  rgba(255,255,255,0.72);
+  --surface2: rgba(255,255,255,0.88);
+  --border:   rgba(255,255,255,0.7);
+  --border2:  rgba(255,255,255,0.4);
+  --card-shadow: var(--glass-shadow);
+  --card-hover:  var(--glass-hover);
+}
+
+/* ── DARK GLASS ── */
+[data-theme="dark"] {
+  --bg-mesh: radial-gradient(ellipse 80% 60% at 15% 10%,
+               hsla(var(--h),80%,25%,0.30) 0%, transparent 60%),
+             radial-gradient(ellipse 60% 50% at 85% 85%,
+               hsla(calc(var(--h)+40),70%,22%,0.25) 0%, transparent 60%),
+             radial-gradient(ellipse 50% 40% at 50% 50%,
+               hsla(calc(var(--h)-20),50%,8%,0.9) 0%, transparent 70%),
+             hsl(var(--h), 25%, 5%);
+  --bg:    hsl(var(--h), 25%, 6%);
+  --bg2:   hsl(var(--h), 25%, 9%);
+  --bg3:   hsl(var(--h), 25%, 12%);
+
+  --glass-bg:    rgba(255,255,255,0.07);
+  --glass-bg2:   rgba(255,255,255,0.11);
+  --glass-border:rgba(255,255,255,0.14);
+  --glass-border2:rgba(255,255,255,0.08);
+  --glass-shadow:0 8px 32px rgba(0,0,0,0.40), 0 2px 8px rgba(0,0,0,0.20);
+  --glass-hover: 0 20px 60px rgba(0,0,0,0.50), 0 4px 20px rgba(0,0,0,0.25);
+  --glass-blur:  saturate(160%) blur(20px);
+  --glass-tint:  hsla(var(--h), 70%, 65%, 0.06);
+
+  --text:   hsl(var(--h), 40%, 92%);
+  --text2:  hsl(var(--h), 35%, 78%);
+  --muted:  hsl(var(--h), 30%, 58%);
+  --subtle: hsl(var(--h), 30%, 44%);
+
+  --nav-bg: rgba(10,14,20,0.65);
+  --nav-blur: saturate(180%) blur(28px);
+
+  --why-bg: linear-gradient(135deg,
+    hsl(var(--h),30%,3%) 0%,
+    hsl(var(--h),32%,5%) 55%,
+    hsl(calc(var(--h)+20),28%,7%) 100%);
+
+  --surface:  rgba(255,255,255,0.07);
+  --surface2: rgba(255,255,255,0.11);
+  --border:   rgba(255,255,255,0.12);
+  --border2:  rgba(255,255,255,0.07);
+  --card-shadow: var(--glass-shadow);
+  --card-hover:  var(--glass-hover);
+}
+
+/* ═══════════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════════ */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* Mesh background on body */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: -1;
+  background: var(--bg-mesh);
+  pointer-events: none;
+  transition: background 0.5s;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; }
+
+/* ═══════════════════════════════════════════════
+   GLASS UTILITY CLASS
+═══════════════════════════════════════════════ */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow),
+              inset 0 1px 0 rgba(255,255,255,0.4),
+              inset 0 -1px 0 rgba(255,255,255,0.05);
+}
+
+/* ═══════════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════════ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+section { padding: 90px 0; }
+
+/* ── Section typography ── */
+.section-label {
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--accent);
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+.section-label::before {
+  content: ''; width: 22px; height: 2px;
+  background: var(--accent); border-radius: 2px; flex-shrink: 0;
+  transition: background 0.3s;
+}
+.center .section-label { justify-content: center; }
+.center .section-label::before { display: none; }
+.center .section-sub { margin: 0 auto; }
+.center { text-align: center; }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.85rem, 3.8vw, 2.75rem);
+  font-weight: 700; color: var(--text);
+  line-height: 1.2; margin-bottom: 0.85rem;
+  transition: color 0.3s;
+}
+.section-sub {
+  font-size: 1rem; color: var(--muted);
+  line-height: 1.78; max-width: 560px;
+  transition: color 0.3s;
+}
+
+/* ── Ripple ── */
+.ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.38);
+  transform: scale(0);
+  animation: rippleAnim 0.55s linear;
+  pointer-events: none;
+}
+@keyframes rippleAnim { to { transform: scale(1); opacity: 0; } }
+
+/* ── Shimmer on glass cards ── */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+.shimmer-host::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.12) 50%, transparent 70%);
+  transform: translateX(-100%) skewX(-15deg);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.shimmer-host:hover::after { animation: shimmer 0.7s ease; }
