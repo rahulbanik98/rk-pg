@@ -86,5 +86,66 @@
   border-radius: 16px; padding: 2.5rem; text-align: center;
   font-size: 1.05rem; font-weight: 600; color: var(--accent);
 }
+
+.error {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1.5px solid rgba(239, 68, 68, 0.25);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ef4444;
+  text-align: left;
+  animation: fadeIn 0.2s ease;
+}
+
+[data-theme="dark"] .error {
+  background: rgba(248, 113, 113, 0.06);
+  border-color: rgba(248, 113, 113, 0.2);
+  color: #f87171;
+}
+
+.resetBtn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.55rem 1.4rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: all 0.2s;
+}
+
+.resetBtn:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 18px var(--accent-glow);
+}
+
+.resetBtn:active {
+  transform: scale(0.97);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fieldError {
+  color: #ef4444;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+  animation: fadeIn 0.18s ease;
+  display: block;
+}
+
+[data-theme="dark"] .fieldError {
+  color: #f87171;
+}
+
 @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .row { grid-template-columns: 1fr; } .formCard { padding: 1.4rem; } }

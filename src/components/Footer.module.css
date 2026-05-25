@@ -63,5 +63,32 @@
 .bottom p { font-size: .8rem; color: rgba(255,255,255,.3); }
 .byline { color: var(--accent) !important; font-weight: 600; }
 
+.bottomSocials {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.socialLink {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.8rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.socialLink:hover {
+  color: var(--accent);
+}
+
+.bullet {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+}
+
 @media (max-width: 768px) { .inner { grid-template-columns: 1fr; gap: 2rem; } }
-@media (max-width: 480px) { .bottom { flex-direction: column; text-align: center; } }
+@media (max-width: 480px) {
+  .bottom { flex-direction: column; text-align: center; gap: 0.8rem; }
+  .bottomSocials { justify-content: center; }
+}

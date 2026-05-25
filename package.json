@@ -11,9 +11,11 @@
   "dependencies": {
     "@cloudinary/react": "^1.14.4",
     "@cloudinary/url-gen": "^1.22.0",
+    "@emailjs/browser": "^4.4.1",
     "aos": "^2.3.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.76.1"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",
