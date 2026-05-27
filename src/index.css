@@ -120,7 +120,10 @@
 /* ═══════════════════════════════════════════════
    BASE
 ═══════════════════════════════════════════════ */
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;

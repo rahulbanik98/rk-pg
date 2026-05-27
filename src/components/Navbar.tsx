@@ -5,17 +5,17 @@ import styles from './Navbar.module.css'
 
 const links = [
   { id: 'amenities', label: 'Amenities' },
-  { id: 'rooms',     label: 'Rooms'     },
-  { id: 'why',       label: 'Why Us'    },
-  { id: 'gallery',   label: 'Gallery'   },
+  { id: 'rooms', label: 'Rooms' },
+  { id: 'why', label: 'Why Us' },
+  { id: 'gallery', label: 'Gallery' },
   { id: 'testimonials', label: 'Reviews' },
-  { id: 'contact',   label: 'Contact'   },
+  { id: 'contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
   const { mode, toggleMode, preset, setPreset } = useTheme()
   const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen]         = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40)
@@ -48,7 +48,7 @@ export default function Navbar() {
               <button className={styles.link} onClick={() => scrollTo(l.id)}>{l.label}</button>
             </li>
           ))}
-          
+
           {/* Mobile Theme Settings inside Hamburger Menu */}
           <li className={styles.mobileThemeOnly}>
             <div className={styles.divider} />
